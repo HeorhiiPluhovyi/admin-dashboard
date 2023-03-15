@@ -1,0 +1,33 @@
+import React from 'react';
+import {Theme, useTheme} from "@mui/material";
+import {tokens} from "../theme/theme";
+import {Box} from "@mui/material";
+import {Typography} from "@mui/material";
+import {ThemeToken} from "../theme/theme.modules";
+
+interface Props {
+  title: string;
+  subtitle: string;
+}
+const Header = ({title, subtitle}: Props) => {
+  const theme: Theme = useTheme();
+  const colors: ThemeToken = tokens(theme.palette.mode);
+
+  return (
+    <Box mb="30px">
+      <Typography
+        variant="h2"
+        color={colors.grey[100]}
+        fontWeight="bold"
+        sx={{ m: "0 0 5px 0" }}
+      >
+        {title}
+      </Typography>
+      <Typography variant="h5" color={colors.greenAccent[400]}>
+        {subtitle}
+      </Typography>
+    </Box>
+  );
+};
+
+export default Header;
